@@ -1,0 +1,376 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9BD67594-69A9-46D7-9F48-70D7D95DD95A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Bifrost</RootNamespace>
+    <AssemblyName>Bifrost.POSPopup</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bifrost.Adv.Controls">
+      <HintPath>..\..\..\GPOSDeploy\Bifrost.Adv.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Bifrost.Common">
+      <HintPath>..\..\..\GPOSDeploy\Bifrost.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Bifrost.Data">
+      <HintPath>..\..\..\GPOSDeploy\Bifrost.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Bifrost.DBManager">
+      <HintPath>..\..\..\GPOSDeploy\Bifrost.DBManager.dll</HintPath>
+    </Reference>
+    <Reference Include="Bifrost.Grid">
+      <HintPath>..\..\..\GPOSDeploy\Bifrost.Grid.dll</HintPath>
+    </Reference>
+    <Reference Include="Bifrost.Helper">
+      <HintPath>..\..\..\GPOSDeploy\Bifrost.Helper.dll</HintPath>
+    </Reference>
+    <Reference Include="Bifrost.System">
+      <HintPath>..\..\..\GPOSDeploy\Bifrost.System.dll</HintPath>
+    </Reference>
+    <Reference Include="Bifrost.Win">
+      <HintPath>..\..\..\GPOSDeploy\Bifrost.Win.dll</HintPath>
+    </Reference>
+    <Reference Include="Bifrost.Win.Controls">
+      <HintPath>..\..\..\GPOSDeploy\Bifrost.Win.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v20.1.Core, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Sparkline.v20.1.Core, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.Desktop.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraEditors.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Enums.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="P_POS_CONTENTS_SINGLE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_POS_CONTENTS_SINGLE.Designer.cs">
+      <DependentUpon>P_POS_CONTENTS_SINGLE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="P_POS_TMP_ITEM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_POS_TMP_ITEM.Designer.cs">
+      <DependentUpon>P_POS_TMP_ITEM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="P_POS_ORDER_TMP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_POS_ORDER_TMP.Designer.cs">
+      <DependentUpon>P_POS_ORDER_TMP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="P_POS_STORE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_POS_STORE.Designer.cs">
+      <DependentUpon>P_POS_STORE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="P_POS_CODE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_POS_CODE.Designer.cs">
+      <DependentUpon>P_POS_CODE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="P_POS_POSTCODE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_POS_POSTCODE.Designer.cs">
+      <DependentUpon>P_POS_POSTCODE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="P_POS_CONTENTS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_POS_CONTENTS.Designer.cs">
+      <DependentUpon>P_POS_CONTENTS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="P_POS_INITIAL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_POS_INITIAL.Designer.cs">
+      <DependentUpon>P_POS_INITIAL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="P_POS_PRINT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_POS_PRINT.Designer.cs">
+      <DependentUpon>P_POS_PRINT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="P_POS_PRINT_SALE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_POS_PRINT_SALE.Designer.cs">
+      <DependentUpon>P_POS_PRINT_SALE.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_POS_CONTENTS_SINGLE.resx">
+      <DependentUpon>P_POS_CONTENTS_SINGLE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_POS_TMP_ITEM.resx">
+      <DependentUpon>P_POS_TMP_ITEM.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_POS_ORDER_TMP.resx">
+      <DependentUpon>P_POS_ORDER_TMP.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_POS_STORE.resx">
+      <DependentUpon>P_POS_STORE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_POS_CODE.resx">
+      <DependentUpon>P_POS_CODE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_POS_POSTCODE.resx">
+      <DependentUpon>P_POS_POSTCODE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="P_POS_CONTENTS.resx">
+      <DependentUpon>P_POS_CONTENTS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_POS_INITIAL.resx">
+      <DependentUpon>P_POS_INITIAL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_POS_PRINT.resx">
+      <DependentUpon>P_POS_PRINT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_POS_PRINT_SALE.resx">
+      <DependentUpon>P_POS_PRINT_SALE.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_calculator_back_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_calculator_back_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_calculator_dot_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_calculator_dot_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_calculator_minus_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_calculator_minus_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_close_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_close_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_dropdown_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_dropdown_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_gpos_logo_header.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_header_close_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_header_close_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_page_back_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_page_back_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_page_bottom_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_page_bottom_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_page_down_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_page_down_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_page_next_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_page_next_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_page_top_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_page_top_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_page_up_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_page_up_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_radio_check_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_radio_check_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_receip_print_icon.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_reorder_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_reorder_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_reset_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_reset_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_save_icon.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_search_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_section_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_section_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_sell_icon.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_setting_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_setting_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_star_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_star_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_to_bottom_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_to_bottom_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_to_left_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_to_left_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_to_right_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_to_right_left_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_to_top_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_to_top_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_trash_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\brightsearch_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\excel_icon.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new_icon_1.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new_icon_2.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new_icon_3.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new_icon_4.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\popup_error_icon.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\popup_information_icon.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\popup_notice_icon.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\popup_question_icon.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\print_icon.svg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy $(TargetPath) D:\GPOSDeploy</PostBuildEvent>
+  </PropertyGroup>
+</Project>

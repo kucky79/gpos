@@ -1,0 +1,421 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{87319A69-6DC7-418E-943F-884984D31B99}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>POS</RootNamespace>
+    <AssemblyName>M_POS_SALE</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bifrost.Adv.Controls">
+      <HintPath>..\..\..\GPOSDeploy\Bifrost.Adv.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Bifrost.Common">
+      <HintPath>..\..\..\GPOSDeploy\Bifrost.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Bifrost.Data">
+      <HintPath>..\..\..\GPOSDeploy\Bifrost.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Bifrost.DBManager">
+      <HintPath>..\..\..\GPOSDeploy\Bifrost.DBManager.dll</HintPath>
+    </Reference>
+    <Reference Include="Bifrost.Grid">
+      <HintPath>..\..\..\GPOSDeploy\Bifrost.Grid.dll</HintPath>
+    </Reference>
+    <Reference Include="Bifrost.Helper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b8524490ef01034a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\GPOSDeploy\Bifrost.Helper.dll</HintPath>
+    </Reference>
+    <Reference Include="Bifrost.POSPopup">
+      <HintPath>..\..\..\GPOSDeploy\Bifrost.POSPopup.dll</HintPath>
+    </Reference>
+    <Reference Include="Bifrost.System">
+      <HintPath>..\..\..\GPOSDeploy\Bifrost.System.dll</HintPath>
+    </Reference>
+    <Reference Include="Bifrost.Win, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b8524490ef01034a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\GPOSDeploy\Bifrost.Win.dll</HintPath>
+    </Reference>
+    <Reference Include="Bifrost.Win.Controls">
+      <HintPath>..\..\..\GPOSDeploy\Bifrost.Win.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Charts.v20.1.Core, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.CodeParser.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.DataAccess.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Office.v20.1.Core, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Pdf.v20.1.Core, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v20.1.Core, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v20.1.Core, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v20.1.Core, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v20.1.Export, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v20.1.Core, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.Desktop.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v20.1.Core, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="HarfBuzzSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\HarfBuzzSharp.1.4.6\lib\net45\HarfBuzzSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Neodynamic.SDK.ThermalLabel, Version=9.0.0.0, Culture=neutral, PublicKeyToken=0630b9b3415848af, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Neodynamic.SDK.ThermalLabel.9.0.19.1114\lib\netstandard2.0\Neodynamic.SDK.ThermalLabel.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp, Version=1.60.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SkiaSharp.1.60.0\lib\net45\SkiaSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="SkiaSharp.HarfBuzz, Version=1.60.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SkiaSharp.HarfBuzz.1.60.0\lib\netstandard1.3\SkiaSharp.HarfBuzz.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Text.Encoding.CodePages, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Text.Encoding.CodePages.4.4.0\lib\net461\System.Text.Encoding.CodePages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Vadavo.NEscPos">
+      <HintPath>..\..\..\GPOSDeploy\Vadavo.NEscPos.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Contents.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Contents.Designer.cs">
+      <DependentUpon>Contents.cs</DependentUpon>
+    </Compile>
+    <Compile Include="imsi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="imsi.Designer.cs">
+      <DependentUpon>imsi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="I_KEYPAD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="I_PRINT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PRINT_LPT.cs" />
+    <Compile Include="P_POS_PRINT_WORKSHEET.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_POS_PRINT_WORKSHEET.Designer.cs">
+      <DependentUpon>P_POS_PRINT_WORKSHEET.cs</DependentUpon>
+    </Compile>
+    <Compile Include="P_POS_PRINT_PAY.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_POS_PRINT_PAY.Designer.cs">
+      <DependentUpon>P_POS_PRINT_PAY.cs</DependentUpon>
+    </Compile>
+    <Compile Include="M_POS_SALE_D.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_KEYPAD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P_KEYPAD.Designer.cs">
+      <DependentUpon>P_KEYPAD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="M_POS_SALE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="M_POS_SALE.Designer.cs">
+      <DependentUpon>M_POS_SALE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Contents.resx">
+      <DependentUpon>Contents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="imsi.resx">
+      <DependentUpon>imsi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="P_KEYPAD.resx">
+      <DependentUpon>P_KEYPAD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="M_POS_SALE.resx">
+      <DependentUpon>M_POS_SALE.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="P_POS_PRINT_WORKSHEET.resx">
+      <DependentUpon>P_POS_PRINT_WORKSHEET.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P_POS_PRINT_PAY.resx">
+      <DependentUpon>P_POS_PRINT_PAY.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_calculator_back_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_calculator_back_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_calculator_dot_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_calculator_dot_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_calculator_minus_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_calculator_minus_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_close_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_close_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_dropdown_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_dropdown_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_gpos_logo_header.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_header_close_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_header_close_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_page_back_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_page_back_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_page_bottom_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_page_bottom_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_page_down_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_page_down_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_page_next_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_page_next_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_page_top_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_page_top_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_page_up_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_page_up_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_radio_check_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_radio_check_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_receip_print_icon.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_registration_icon.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_reorder_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_reorder_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_reset_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_save_icon.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_search_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_section_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_section_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_sell_icon.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_setting_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_setting_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_star_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_star_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_to_bottom_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_to_bottom_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_to_left_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_to_left_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_to_right_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_to_right_left_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_to_top_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_to_top_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_trash_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\brightsearch_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\excel_icon.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new_icon_1.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new_icon_2.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new_icon_3.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new_icon_4.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\popup_error_icon.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\popup_information_icon.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\popup_notice_icon.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\popup_question_icon.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\print_icon.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_reset_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\profit.svg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy $(TargetPath) D:\GPOSDeploy</PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="..\..\packages\HarfBuzzSharp.1.4.6\build\net45\HarfBuzzSharp.targets" Condition="Exists('..\..\packages\HarfBuzzSharp.1.4.6\build\net45\HarfBuzzSharp.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>이 프로젝트는 이 컴퓨터에 없는 NuGet 패키지를 참조합니다. 해당 패키지를 다운로드하려면 NuGet 패키지 복원을 사용하십시오. 자세한 내용은 http://go.microsoft.com/fwlink/?LinkID=322105를 참조하십시오. 누락된 파일은 {0}입니다.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\HarfBuzzSharp.1.4.6\build\net45\HarfBuzzSharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\HarfBuzzSharp.1.4.6\build\net45\HarfBuzzSharp.targets'))" />
+    <Error Condition="!Exists('..\..\packages\SkiaSharp.1.60.0\build\net45\SkiaSharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\SkiaSharp.1.60.0\build\net45\SkiaSharp.targets'))" />
+  </Target>
+  <Import Project="..\..\packages\SkiaSharp.1.60.0\build\net45\SkiaSharp.targets" Condition="Exists('..\..\packages\SkiaSharp.1.60.0\build\net45\SkiaSharp.targets')" />
+</Project>

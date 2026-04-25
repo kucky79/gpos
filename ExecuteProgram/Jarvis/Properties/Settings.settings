@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Ether.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Ether_IAppUpdater_AppUpdater" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/AppUpdaterService/AppUpdater.asmx</Value>
+    </Setting>
+    <Setting Name="AppUpdateUrl" Type="(Web Service URL)" Scope="User">
+      <Value Profile="(Default)">http://localhost/AppUpdaterService/AppUpdater.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

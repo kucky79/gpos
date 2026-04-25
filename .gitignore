@@ -1,0 +1,36 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build output
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+
+# NuGet packages restored locally
+packages/
+*.nupkg
+
+# Deployment/output artifacts
+GPOSDeploy/
+*.dll
+*.exe
+*.pdb
+*.cache
+*.log
+
+# Local archives and backup files
+*.zip
+*.bak
+
+# OS/editor files
+Thumbs.db
+Desktop.ini
+*.tmp
+*.temp

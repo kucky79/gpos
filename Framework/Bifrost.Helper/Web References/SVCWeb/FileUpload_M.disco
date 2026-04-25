@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://222.234.146.44/ISYWebService/HttpFile/FileUpload_M.asmx?wsdl" docRef="http://222.234.146.44/ISYWebService/HttpFile/FileUpload_M.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://222.234.146.44/ISYWebService/HttpFile/FileUpload_M.asmx" xmlns:q1="http://tempuri.org/" binding="q1:FileUpload_MSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://222.234.146.44/ISYWebService/HttpFile/FileUpload_M.asmx" xmlns:q2="http://tempuri.org/" binding="q2:FileUpload_MSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

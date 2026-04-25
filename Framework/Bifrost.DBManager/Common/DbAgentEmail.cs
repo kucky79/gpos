@@ -1,0 +1,879 @@
+using NF.A2P.Common.Util;
+using System;
+using System.Data;
+using System.Data.Common;
+using System.Data.SqlClient;
+using System.Diagnostics;
+using System.Globalization;
+
+namespace NF.A2P.Common
+{
+    public class DbAgentEmail
+    {
+        DbTransaction tran = null;
+        DbConnection cn = null;
+        DbCommand cmd = null;
+        ParameterCache pcache = null;
+        string connectionString;
+
+        private static DbAgentEmail instance = null;
+
+        private DbAgentEmail()
+        {
+            //string Path = AppDomain.CurrentDomain.BaseDirectory + @"Setting.ini";
+            //IniFile inifile = new IniFile();
+
+            //connectionString = inifile.IniReadValue("DB", "ConnectionString", Path);
+            //if (connectionString == "")
+            //{
+            //    //default 
+            //    inifile.IniWriteValue("DB", "ConnectionString", "Data Source=localhost; initial Catalog=AIMS2;uid=YOUR_USER;password=YOUR_PASSWORD;", Path);
+            //    connectionString = inifile.IniReadValue("DB", "ConnectionString", Path);
+            //}
+
+            connectionString = "Data Source=localhost; initial Catalog=AIMS2;uid=YOUR_USER;password=YOUR_PASSWORD;";
+        }
+
+        public DbAgentEmail(string connectionString)
+        {
+            this.connectionString = connectionString;
+        }
+
+        protected internal static DbAgentEmail GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new DbAgentEmail();
+            }
+
+            return instance;
+        }
+
+        protected internal static void ReSet()
+        {
+            instance = new DbAgentEmail();
+        }
+
+        private void CreateConnection()
+        {
+            if (cn != null)
+                return;
+
+            cn = new SqlConnection(connectionString);
+        }
+
+        private void CreateCommand()
+        {
+            if (cmd != null)
+                return;
+
+            cmd = new SqlCommand();
+
+            if (cn == null)
+                CreateConnection();
+
+            cmd.Connection = cn;
+            cmd.CommandTimeout = 12000; // 12000초 = 200분 = 약 3시간
+
+            // 이부분은 COM+ 에서는 필요없다.
+            if (tran != null)
+                cmd.Transaction = tran;
+        }
+
+        private DbDataAdapter GetDataAdapter()
+        {
+            return new SqlDataAdapter();
+        }
+
+        protected internal void BeginTransaction()
+        {
+            if (tran != null)
+                return;
+
+            try
+            {
+                if (cn == null)
+                    CreateConnection();
+
+                if (cn.State == ConnectionState.Closed)
+                    cn.Open();
+
+                tran = cn.BeginTransaction(IsolationLevel.ReadCommitted);
+            }
+            catch
+            {
+                cn.Close();
+
+                throw;
+            }
+        }
+
+        protected internal void CommitTransaction()
+        {
+            if (tran == null)
+                return;
+
+            try
+            {
+                tran.Commit();
+            }
+            catch
+            {
+                RollbackTransaction();
+
+                throw;
+            }
+            finally
+            {
+                cn.Close();
+                tran.Dispose();
+                tran = null;
+            }
+        }
+
+        protected internal void RollbackTransaction()
+        {
+            if (tran == null)
+                return;
+
+            try
+            {
+                tran.Rollback();
+            }
+            catch
+            {
+            }
+            finally
+            {
+                cn.Close();
+                tran.Dispose();
+                tran = null;
+            }
+        }
+
+        void ResetCommand(string query, CommandType cmdType)
+        {
+            if (cn == null) CreateConnection();
+            if (cmd == null) CreateCommand();
+
+            cmd.Connection = cn;
+            cmd.CommandText = query;
+            cmd.CommandType = cmdType;
+            if (tran != null)
+                cmd.Transaction = tran;
+
+            if (cmd.Parameters != null) cmd.Parameters.Clear();
+            if (cn.State == ConnectionState.Closed) cn.Open();
+        }
+
+        private DbParameter[] GetParameters(string spName)
+        {
+            if (pcache == null)
+            {
+                pcache = new ParameterCache();
+            }
+
+            ResetCommand("AP_PARAMS_S", CommandType.StoredProcedure);
+
+            return pcache.GetParameters(ref cmd, spName);
+        }
+
+        private void PrepareCommand(string cmdText, CommandType cmdType, object[] cmdParas)
+        {
+            if (cmdType == CommandType.StoredProcedure)
+            {
+                DbParameter[] cacheParas = GetParameters(cmdText);
+                ResetCommand(cmdText, cmdType);
+
+                pcache.CachePrepareCommandSql(ref cmd, cacheParas, cmdText, cmdType, cmdParas);
+            }
+            else
+            {
+                ResetCommand(cmdText, cmdType);
+            }
+        }
+
+        protected internal ResultData FillResultTable(string spName, CommandType cmdType, object[] cmdParas)
+        {
+            ResultData result = new ResultData();
+
+            try
+            {
+                PrepareCommand(spName, cmdType, cmdParas);
+
+                DbDataAdapter da = GetDataAdapter();
+                da.SelectCommand = cmd;
+                DataTable dt = new DataTable();
+
+                da.Fill(dt);
+                result.DataValue = dt;
+
+                foreach (SqlParameter para in cmd.Parameters)
+                {
+                    if (para.Direction == ParameterDirection.Output)
+                    {
+                        result.OutParamsSelect.ColumnsAdd(para.ParameterName);
+                        result.OutParamsSelect[0, para.ParameterName] = para.Value;
+                    }
+                }
+
+                Debug.WriteLine("■■■■■■■■■■FillDataSet■■■■■■■■■■");
+                Debug.WriteLine("■■■■■spName = " + spName);
+                for (int i = 0; i < cmdParas.Length; i++)
+                {
+                    Debug.WriteLine("■■■■■parameters[{0}] = {1}", new object[] { i, cmdParas[i] });
+                }
+
+                result.Result = true;
+                return result;
+            }
+            catch
+            {
+                DoWhenException();
+
+                throw;
+            }
+        }
+
+        void DoWhenException()
+        {
+            if(pcache != null)
+                pcache.DeleteAll();
+
+            if (tran != null)
+                RollbackTransaction();
+            else
+                cn.Close();
+
+        }
+
+        protected internal DataTable FillDataTable(string cmdText, CommandType cmdType, object[] cmdParas)
+        {
+            try
+            {
+                PrepareCommand(cmdText, cmdType, cmdParas);
+
+                DbDataAdapter da = GetDataAdapter();
+                da.SelectCommand = cmd;
+                DataTable dt = new DataTable();
+                dt.RemotingFormat = SerializationFormat.Binary;
+                da.Fill(dt);
+
+                Debug.WriteLine("■■■■■■■■■■FillDataSet■■■■■■■■■■");
+                Debug.WriteLine("■■■■■spName = " + cmdText);
+                for (int i = 0; i < cmdParas.Length; i++)
+                {
+                    Debug.WriteLine("■■■■■parameters[{0}] = {1}", new object[] { i, cmdParas[i] });
+                }
+
+                return dt;
+            }
+            catch
+            {
+                DoWhenException();
+
+                throw;
+            }
+        }
+
+        protected internal DataTable FillDataTable(string spName, object[] cmdParas)
+        {
+            try
+            {
+                PrepareCommand(spName, CommandType.StoredProcedure, cmdParas);
+
+                DbDataAdapter da = GetDataAdapter();
+                da.SelectCommand = cmd;
+                DataTable dt = new DataTable();
+                dt.RemotingFormat = SerializationFormat.Binary;
+                da.Fill(dt);
+
+
+                Debug.WriteLine("■■■■■■■■■■FillDataSet■■■■■■■■■■");
+                Debug.WriteLine("■■■■■spName = " + spName);
+                for (int i = 0; i < cmdParas.Length; i++)
+                {
+                    Debug.WriteLine("■■■■■parameters[{0}] = {1}", new object[] { i, cmdParas[i] });
+                }
+
+                return dt;
+            }
+            catch
+            {
+                DoWhenException();
+
+                throw;
+            }
+        }
+
+        protected internal DataTable FillDataTable(string query)
+        {
+            try
+            {
+                PrepareCommand(query, CommandType.Text, null);
+
+                DbDataAdapter da = GetDataAdapter();
+                da.SelectCommand = cmd;
+                DataTable dt = new DataTable();
+
+                da.Fill(dt);
+
+                Debug.WriteLine("■■■■■■■■■■FillDataSet■■■■■■■■■■");
+                Debug.WriteLine("■■■■■Query = " + query);
+
+                return dt;
+            }
+            catch
+            {
+                DoWhenException();
+
+                throw;
+            }
+        }
+
+        protected internal ResultData FillDataTable(SpInfo spInfo)
+        {
+            ResultData result = new ResultData();
+
+            try
+            {
+                string spName = spInfo.SpNameSelect;
+                object[] paras = spInfo.SpParamsSelect;
+
+                DataTable dt = FillDataTable(spName, CommandType.StoredProcedure, paras);
+
+                result.DataValue = dt;
+
+                result.Result = true;
+                return result;
+            }
+            catch
+            {
+                DoWhenException();
+
+                throw;
+            }
+        }
+
+        protected internal object ExecuteScalar(string cmdText, CommandType cmdType, object[] cmdParas)
+        {
+            try
+            {
+                PrepareCommand(cmdText, cmdType, cmdParas);
+
+                object objValue = cmd.ExecuteScalar();
+
+
+                Debug.WriteLine("ExecuteScalar");
+                Debug.WriteLine("spName : {0}", cmdText);
+                if (cmdParas != null)
+                {
+                    for (int i = 0; i < cmdParas.Length; i++)
+                    {
+                        Debug.WriteLine("parameters[{0}] = {1}", new object[] { i, cmdParas[i] });
+                    }
+                }
+                if (objValue != DBNull.Value)
+                    return objValue;
+                else
+                    return null;
+            }
+            catch
+            {
+                DoWhenException();
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// 2016.12.21
+        /// </summary>
+        /// <param name="cmdText"></param>
+        /// <param name="cmdType"></param>
+        /// <param name="cmdParas"></param>
+        /// <returns></returns>
+        protected internal object ExecuteNonQuery(string cmdText, object[] cmdParas)
+        {
+            try
+            {
+                PrepareCommand(cmdText, CommandType.Text, cmdParas);
+
+                object objValue = cmd.ExecuteNonQuery();
+
+
+                Debug.WriteLine("ExecuteNonQuery");
+                Debug.WriteLine("spName : {0}", cmdText);
+                if (cmdParas != null)
+                {
+                    for (int i = 0; i < cmdParas.Length; i++)
+                    {
+                        Debug.WriteLine("parameters[{0}] = {1}", new object[] { i, cmdParas[i] });
+                    }
+                }
+                if (objValue != DBNull.Value)
+                    return objValue;
+                else
+                    return null;
+            }
+            catch
+            {
+                DoWhenException();
+                throw;
+            }
+        }
+
+
+
+        protected internal DataSet FillDataSet(SpInfoCollection spCollection)
+        {
+            if (spCollection == null)
+                return null;
+
+            DataSet ds = new DataSet();
+
+            try
+            {
+                foreach (SpInfo si in spCollection)
+                {
+                    string spName = si.SpNameSelect;
+                    object[] paras = si.SpParamsSelect;
+
+                    DataTable dt = FillDataTable(spName, CommandType.StoredProcedure, paras);
+                    ds.Tables.Add(dt);
+
+                    Debug.WriteLine("■■■■■■■■■■FillDataSet■■■■■■■■■■");
+                    Debug.WriteLine("■■■■■spName = " + spName);
+                    for (int i = 0; i < paras.Length; i++)
+                    {
+                        Debug.WriteLine("■■■■■parameters[{0}] = {1}", new object[] { i, paras[i] });
+                    }
+                }
+
+                return ds;
+            }
+            catch
+            {
+                DoWhenException();
+
+                throw;
+            }
+        }
+
+
+        protected internal DataSet FillDataSet(string query)
+        {
+            try
+            {
+                PrepareCommand(query, CommandType.Text, null);
+
+                DbDataAdapter da = GetDataAdapter();
+                da.SelectCommand = cmd;
+                DataSet ds = new DataSet();
+
+                da.Fill(ds);
+
+                Debug.WriteLine("■■■■■■■■■■FillDataSet by query■■■■■■■■■■");
+                Debug.WriteLine("■■■■■query = " + query);
+
+                return ds;
+            }
+            catch
+            {
+                DoWhenException();
+
+                throw;
+            }
+        }
+
+
+        protected internal ResultData FillResultSet(string spName, object[] paras)
+        {
+            ResultData result = new ResultData();
+
+            try
+            {
+                PrepareCommand(spName, CommandType.StoredProcedure, paras);
+
+                DbDataAdapter da = GetDataAdapter();
+                da.SelectCommand = cmd;
+                DataSet ds = new DataSet();
+
+                da.Fill(ds);
+                result.DataValue = ds;
+
+                foreach (SqlParameter para in cmd.Parameters)
+                {
+                    if (para.Direction == ParameterDirection.Output)
+                    {
+                        result.OutParamsSelect.ColumnsAdd(para.ParameterName);
+                        result.OutParamsSelect[0, para.ParameterName] = para.Value;
+                    }
+                }
+
+                Debug.WriteLine("■■■■■■■■■■FillDataSet■■■■■■■■■■");
+                Debug.WriteLine("■■■■■spName = " + spName);
+                for (int i = 0; i < paras.Length; i++)
+                {
+                    Debug.WriteLine("■■■■■parameters[{0}] = {1}", new object[] { i, paras[i] });
+                }
+
+                result.Result = true;
+                return result;
+            }
+            catch
+            {
+                DoWhenException();
+
+                throw;
+            }
+        }
+
+        protected internal ResultData[] Save(SpInfoCollection sic)
+        {
+            ResultData[] result = new ResultData[sic.Count];
+
+            int i = 0;
+
+            try
+            {
+
+                foreach (SpInfo si in sic)
+                {
+                    result[i] = Save(si);
+                    i++;
+
+                }
+
+                return result;
+            }
+            catch
+            {
+                DoWhenException();
+
+                throw;
+            }
+        }
+
+        protected internal ResultData Save(SpInfo si)
+        {
+            ResultData result = new ResultData();
+
+            try
+            {
+                if (si != null)
+                {
+                    DataTable dtOrigin = ((DataTable)si.DataValue);
+                    DataTable dtTemp = null;
+
+                    Debug.WriteLine("■■■■■■■■■■Save■■■■■■■■■■");
+                    //Debug.WriteLine("■■■■■SpNameInsert = " + si.SpNameInsert);
+                    //for (int i = 0; i < dtOrigin.Columns.Count; i++)
+                    //{
+                    //    Debug.WriteLine("■■■■■{0} = {1}" ,new object[] { si.SpParamsInsert[i], dtOrigin.Columns[si.SpParamsInsert[i].ToString()].ToString() });
+                    //}
+                    //Debug.WriteLine("■■■■■SpNameUpdate = " + si.SpNameUpdate);
+                    //for (int i = 0; i < dtOrigin.Columns.Count; i++)
+                    //{
+                    //    Debug.WriteLine("■■■■■{0} = {1}", new object[] { si.SpParamsUpdate[i], dtOrigin.Columns[i].ToString() });
+                    //}
+                    //Debug.WriteLine("■■■■■SpNameDelete = " + si.SpNameDelete);
+                    //for (int i = 0; i < dtOrigin.Columns.Count; i++)
+                    //{
+                    //    Debug.WriteLine("■■■■■{0} = {1}", new object[] { si.SpParamsDelete[i], dtOrigin.Columns[i].ToString() });
+                    //}
+
+                    if (dtOrigin != null)
+                    {
+                        dtTemp = dtOrigin.Copy();
+
+                        SetDefaultValue(ref si);
+
+                        // RowState에 적용받지 않고 실행하는 경우...
+                        if (si.DataState != DataValueState.NoAccept)
+                        {
+                            switch (si.DataState)
+                            {
+                                case DataValueState.Added:
+                                    if (si.SpParamsValues != null && si.SpParamsValues.Count > 0)
+                                    {
+                                        SingleValue[] sv = (SingleValue[])si.SpParamsValues[CommonFunction.SpState.Insert];
+                                        if (sv != null && sv.Length > 0)
+                                            ChangeDataTable(ref dtTemp, sv);
+                                    }
+                                    result.OutParamsInsert = ExecuteNonQuery(dtTemp, si.SpNameInsert, si.SpParamsInsert);
+                                    break;
+                                case DataValueState.Deleted:
+                                    if (si.SpParamsValues != null && si.SpParamsValues.Count > 0)
+                                    {
+                                        SingleValue[] sv = (SingleValue[])si.SpParamsValues[CommonFunction.SpState.Delete];
+                                        if (sv != null && sv.Length > 0)
+                                            ChangeDataTable(ref dtTemp, sv);
+                                    }
+                                    result.OutParamsDelete = ExecuteNonQuery(dtTemp, si.SpNameDelete, si.SpParamsDelete);
+                                    break;
+                                case DataValueState.Modified:
+                                    if (si.SpParamsValues != null && si.SpParamsValues.Count > 0)
+                                    {
+                                        SingleValue[] sv = (SingleValue[])si.SpParamsValues[CommonFunction.SpState.Update];
+                                        if (sv != null && sv.Length > 0)
+                                            ChangeDataTable(ref dtTemp, sv);
+                                    }
+                                    result.OutParamsUpdate = ExecuteNonQuery(dtTemp, si.SpNameUpdate, si.SpParamsUpdate);
+                                    break;
+                            }
+                        }
+                        else  // si.DataState == DataValueState.NoAccept
+                        {
+                            DataTable dtInsert = null;
+                            DataTable dtUpdate = null;
+                            DataTable dtDelete = null;
+
+                            if (si.SpNameInsert != null && si.SpNameInsert != string.Empty)
+                                dtInsert = dtTemp.GetChanges(DataRowState.Added);
+
+                            if (si.SpNameUpdate != null && si.SpNameUpdate != string.Empty)
+                                dtUpdate = dtTemp.GetChanges(DataRowState.Modified);
+
+                            if (si.SpNameDelete != null && si.SpNameDelete != string.Empty)
+                                dtDelete = dtTemp.GetChanges(DataRowState.Deleted);
+
+                            // Deleted
+                            if (dtDelete != null && dtDelete.Rows.Count > 0)
+                            {
+                                DataTable dtDeleteTemp = new DataTable();
+                                for (int i = 0; i < dtDelete.Columns.Count; i++)
+                                    dtDeleteTemp.Columns.Add(dtDelete.Columns[i].ColumnName, dtDelete.Columns[i].DataType);
+
+                                DataRow newrow = null;
+                                DataView dvTemp = dtDelete.DefaultView;
+                                dvTemp.RowStateFilter = DataViewRowState.Deleted;
+                                for (int rowIndex = 0; rowIndex < dvTemp.Count; rowIndex++)
+                                {
+                                    newrow = dtDeleteTemp.NewRow();
+                                    for (int colIndex = 0; colIndex < dtDeleteTemp.Columns.Count; colIndex++)
+                                        newrow[colIndex] = dvTemp[rowIndex][colIndex];
+                                    dtDeleteTemp.Rows.Add(newrow);
+                                }
+
+                                if (si.SpParamsValues != null && si.SpParamsValues.Count > 0)
+                                {
+                                    SingleValue[] sv = (SingleValue[])si.SpParamsValues[CommonFunction.SpState.Delete];
+                                    if (sv != null && sv.Length > 0)
+                                        ChangeDataTable(ref dtDeleteTemp, sv);
+                                }
+                                result.OutParamsDelete = ExecuteNonQuery(dtDeleteTemp, si.SpNameDelete, si.SpParamsDelete);
+                            }
+
+                            // Added
+                            if (dtInsert != null && dtInsert.Rows.Count > 0)
+                            {
+                                if (si.SpParamsValues != null && si.SpParamsValues.Count > 0)
+                                {
+                                    SingleValue[] sv = (SingleValue[])si.SpParamsValues[CommonFunction.SpState.Insert];
+                                    if (sv != null && sv.Length > 0)
+                                        ChangeDataTable(ref dtInsert, sv);
+                                }
+                                result.OutParamsInsert = ExecuteNonQuery(dtInsert, si.SpNameInsert, si.SpParamsInsert);
+                            }
+
+                            // Modified
+                            if (dtUpdate != null && dtUpdate.Rows.Count > 0)
+                            {
+                                if (si.SpParamsValues != null && si.SpParamsValues.Count > 0)
+                                {
+                                    SingleValue[] sv = (SingleValue[])si.SpParamsValues[CommonFunction.SpState.Update];
+                                    if (sv != null && sv.Length > 0)
+                                        ChangeDataTable(ref dtUpdate, sv);
+                                }
+                                result.OutParamsUpdate = ExecuteNonQuery(dtUpdate, si.SpNameUpdate, si.SpParamsUpdate);
+                            }
+                        }
+                    }
+                    else  // SpInfo 의 DataValue 가 null 인 경우
+                    {
+                        if (si.SpNameNonQuery != null && si.SpNameNonQuery != string.Empty)
+                        {
+                            result.OutParamsSelect = ExecuteNonQuery(si.SpNameNonQuery, CommandType.StoredProcedure, si.SpParamsNonQuery);
+                            result.Result = true;
+                        }
+                    }
+                }
+
+                
+                result.Result = true;
+                return result;
+            }
+            catch
+            {
+                DoWhenException();
+
+                throw;
+            }
+        }
+
+        private OutParameters ExecuteNonQuery(string cmdText, CommandType cmdType, object[] paraValues)
+        {
+            OutParameters outParameters = null;
+
+            try
+            {
+                PrepareCommand(cmdText, cmdType, paraValues);
+
+                cmd.ExecuteNonQuery();
+
+                foreach (SqlParameter para in cmd.Parameters)
+                {
+                    if (para.Direction == ParameterDirection.Output)
+                    {
+                        if (outParameters == null)
+                            outParameters = new OutParameters();
+
+                        outParameters.ColumnsAdd(para.ParameterName);
+                        outParameters[0, para.ParameterName] = para.Value;
+                    }
+                }
+
+                return outParameters;
+            }
+            catch
+            {
+                DoWhenException();
+
+                throw;
+            }
+        }
+
+        private OutParameters ExecuteNonQuery(DataTable dt, string spName, string[] colNames)
+        {
+            if (dt == null || dt.Rows.Count <= 0)
+                return null;
+
+            DbParameter[] cacheParas = GetParameters(spName);
+
+            ResetCommand(spName, CommandType.StoredProcedure);
+
+            OutParameters outParameters = new OutParameters();
+
+            Debug.WriteLine("■■■■■spName = " + spName);
+
+            for (int dtRow = 0; dtRow < dt.Rows.Count; dtRow++)
+            {
+                for (int i = 0; i < colNames.Length; i++)
+                {
+                    Debug.WriteLine("■■■■■parameters[{0}] = {1}", new object[] { colNames[i], dt.Rows[dtRow][colNames[i]] });
+                }
+                Debug.WriteLine("■■■■■------------------------------");
+
+            }
+            Debug.WriteLine("■■■■■■■■■■■■■■■■■■■■■■■■■");
+
+            try
+            {
+                return pcache.CachePrepareCommandSqlForSave(ref cmd, cacheParas, spName, dt, colNames);
+            }
+            catch
+            {
+                DoWhenException();
+
+                throw;
+            }
+        }
+
+        private void ChangeDataTable(ref DataTable dtTemp, SingleValue[] sv)
+        {
+            for (int i = 0; i < sv.Length; i++)
+            {
+                if (!dtTemp.Columns.Contains(sv[i].ColumnName))
+                    dtTemp.Columns.Add(sv[i].ColumnName, typeof(string));
+                else
+                    throw new System.Data.DuplicateNameException(String.Format("'{0}' 열이 중복되었습니다. ", sv[i].ColumnName));
+            }
+
+            //데이터 집어넣기
+            for (int index = 0; index < dtTemp.Rows.Count; index++)
+            {
+                for (int col = 0; col < sv.Length; col++)
+                    dtTemp.Rows[index][sv[col].ColumnName.ToString()] = sv[col].DefaultValue;
+            }
+        }
+
+        private void SetDefaultValue(ref SpInfo si)
+        {
+            SetDefaultValue(ref si, CommonFunction.SpState.Insert, "CD_FIRM", si.FirmCode);
+            SetDefaultValue(ref si, CommonFunction.SpState.Insert, "CD_USER_REG", si.UserID);
+            SetDefaultValue(ref si, CommonFunction.SpState.Insert, "CD_USER_AMD", si.UserID);
+
+            SetDefaultValue(ref si, CommonFunction.SpState.Update, "CD_FIRM", si.FirmCode);
+            SetDefaultValue(ref si, CommonFunction.SpState.Update, "CD_USER_REG", si.UserID);
+            SetDefaultValue(ref si, CommonFunction.SpState.Update, "CD_USER_AMD", si.UserID);
+
+            SetDefaultValue(ref si, CommonFunction.SpState.Delete, "CD_FIRM", si.FirmCode);
+            SetDefaultValue(ref si, CommonFunction.SpState.Delete, "CD_USER_REG", si.UserID);
+            SetDefaultValue(ref si, CommonFunction.SpState.Delete, "CD_USER_AMD", si.UserID);
+        }
+
+        private void SetDefaultValue(ref SpInfo si, CommonFunction.SpState actionState, string colName, string defaultValue)
+        {
+            string[] spParaColNames = null;
+
+            switch (actionState)
+            {
+                case CommonFunction.SpState.Insert:
+                    spParaColNames = si.SpParamsInsert;
+                    break;
+                case CommonFunction.SpState.Update:
+                    spParaColNames = si.SpParamsUpdate;
+                    break;
+                case CommonFunction.SpState.Delete:
+                    spParaColNames = si.SpParamsDelete;
+                    break;
+            }
+
+            if (!HasDefaultValue(si.SpParamsValues, actionState, colName))
+            {
+                if (!Contains((DataTable)si.DataValue, colName) && Contains(spParaColNames, colName))
+                {
+                    si.SpParamsValues.Add(actionState, colName, defaultValue);
+                }
+            }
+        }
+
+        private bool Contains(DataTable dt, string colName)
+        {
+            if (dt == null)
+                return false;
+
+            return dt.Columns.Contains(colName);
+        }
+
+        private bool Contains(string[] svc, string colName)
+        {
+            if (svc == null)
+                return false;
+
+            for (int i = 0; i < svc.Length; i++)
+            {
+                if (String.Compare(colName, svc[i], true, CultureInfo.InvariantCulture) == 0)
+                    return true;
+            }
+
+            return false;
+        }
+
+        private bool HasDefaultValue(SingleValueCollection svc, CommonFunction.SpState SpState, string colName)
+        {
+            SingleValue[] sv = svc[SpState];
+
+            if (sv == null)
+                return false;
+
+            for (int i = 0; i < sv.Length; i++)
+            {
+                if (String.Compare(sv[i].ColumnName, colName, true, CultureInfo.InvariantCulture) == 0)
+                    return true;
+            }
+
+            return false;
+        }
+    }
+}

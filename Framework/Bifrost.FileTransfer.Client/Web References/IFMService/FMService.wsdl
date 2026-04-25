@@ -1,0 +1,1276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetUpdateFiles">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="localFileInfos" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetUpdateFilesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUpdateFilesResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBaseUpdateFiles">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="localFileInfos" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBaseUpdateFilesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBaseUpdateFilesResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReportsUpdateFiles">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="localFileInfos" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReportsUpdateFilesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetReportsUpdateFilesResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSubReportsUpdateFiles">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="localFileInfos" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSubReportsUpdateFilesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSubReportsUpdateFilesResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="NeedReloadAllFiles">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="serverFolder" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="NeedReloadAllFilesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NeedReloadAllFilesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveFileWithShellExecute">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="instanceId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="targetFolder" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="gacRegister" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveFileWithShellExecuteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SaveFileWithShellExecuteResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Initialization">
+        <s:complexType />
+      </s:element>
+      <s:element name="InitializationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InitializationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BeginUpload">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="instanceId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="targetFileName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SubFolder" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BeginUploadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="BeginUploadResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AppendChunk">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="instanceId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="buffer" type="s:base64Binary" />
+            <s:element minOccurs="1" maxOccurs="1" name="offset" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AppendChunkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AppendChunkResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EndUpload">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="instanceId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EndUploadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EndUploadResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Save">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="instanceId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SaveResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveAll">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="instanceId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveAllResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SaveAllResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveAllWithFileInfoMst">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="instanceId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="masterFileNum" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveAllWithFileInfoMstResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SaveAllWithFileInfoMstResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadFileOnly">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="targetServerFolder" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="subPath" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="buffer" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadFileOnlyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UploadFileOnlyResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteFolder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="targetServerFolder" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteFolderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteFolderResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteFiles">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fullFiles" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteFilesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteFilesResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BeginDownload">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="instanceId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BeginDownloadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BeginDownloadResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetChunk">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="instanceId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="offset" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="count" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="fileSize" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetChunkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetChunkResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="buffer" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EndDownload">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="instanceId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EndDownloadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EndDownloadResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUploadSizeLimmit">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetUploadSizeLimmitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetUploadSizeLimmitResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteFileInfoMst">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="instanceId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SubFolder" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="masterFileNum" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteFileInfoMstResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteFileInfoMstResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFileInfoDetailSeqs">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="instanceId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SubFolder" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="masterFileNum" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFileInfoDetailSeqsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFileInfoDetailSeqsResult" type="tns:ArrayOfInt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetFileInfoDetailNames">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="instanceId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SubFolder" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="masterFileNum" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFileInfoDetailNamesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFileInfoDetailNamesResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFileInfoDetailGuidNames">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="instanceId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SubFolder" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="masterFileNum" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFileInfoDetailGuidNamesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFileInfoDetailGuidNamesResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFileInfoDetailGuids">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="instanceId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SubFolder" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="masterFileNum" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFileInfoDetailGuidsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFileInfoDetailGuidsResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteFileInfoDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="instanceId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SubFolder" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="masterFileNum" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileDetailSeqs" type="tns:ArrayOfInt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteFileInfoDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteFileInfoDetailsResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAllFileInfoDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="instanceId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SubFolder" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="masterFileNum" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteAllFileInfoDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteAllFileInfoDetailsResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFileInfoUrl">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="instanceId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SubFolder" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="masterFileNum" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFileInfoUrlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFileInfoUrlResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFileInfoDetailUrl">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="instanceId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="fileInfoDetailSeq" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFileInfoDetailUrlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFileInfoDetailUrlResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetUpdateFilesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUpdateFiles" />
+  </wsdl:message>
+  <wsdl:message name="GetUpdateFilesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUpdateFilesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBaseUpdateFilesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBaseUpdateFiles" />
+  </wsdl:message>
+  <wsdl:message name="GetBaseUpdateFilesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBaseUpdateFilesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetReportsUpdateFilesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetReportsUpdateFiles" />
+  </wsdl:message>
+  <wsdl:message name="GetReportsUpdateFilesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetReportsUpdateFilesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSubReportsUpdateFilesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSubReportsUpdateFiles" />
+  </wsdl:message>
+  <wsdl:message name="GetSubReportsUpdateFilesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSubReportsUpdateFilesResponse" />
+  </wsdl:message>
+  <wsdl:message name="NeedReloadAllFilesSoapIn">
+    <wsdl:part name="parameters" element="tns:NeedReloadAllFiles" />
+  </wsdl:message>
+  <wsdl:message name="NeedReloadAllFilesSoapOut">
+    <wsdl:part name="parameters" element="tns:NeedReloadAllFilesResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveFileWithShellExecuteSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveFileWithShellExecute" />
+  </wsdl:message>
+  <wsdl:message name="SaveFileWithShellExecuteSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveFileWithShellExecuteResponse" />
+  </wsdl:message>
+  <wsdl:message name="InitializationSoapIn">
+    <wsdl:part name="parameters" element="tns:Initialization" />
+  </wsdl:message>
+  <wsdl:message name="InitializationSoapOut">
+    <wsdl:part name="parameters" element="tns:InitializationResponse" />
+  </wsdl:message>
+  <wsdl:message name="BeginUploadSoapIn">
+    <wsdl:part name="parameters" element="tns:BeginUpload" />
+  </wsdl:message>
+  <wsdl:message name="BeginUploadSoapOut">
+    <wsdl:part name="parameters" element="tns:BeginUploadResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppendChunkSoapIn">
+    <wsdl:part name="parameters" element="tns:AppendChunk" />
+  </wsdl:message>
+  <wsdl:message name="AppendChunkSoapOut">
+    <wsdl:part name="parameters" element="tns:AppendChunkResponse" />
+  </wsdl:message>
+  <wsdl:message name="EndUploadSoapIn">
+    <wsdl:part name="parameters" element="tns:EndUpload" />
+  </wsdl:message>
+  <wsdl:message name="EndUploadSoapOut">
+    <wsdl:part name="parameters" element="tns:EndUploadResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveSoapIn">
+    <wsdl:part name="parameters" element="tns:Save" />
+  </wsdl:message>
+  <wsdl:message name="SaveSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveAllSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveAll" />
+  </wsdl:message>
+  <wsdl:message name="SaveAllSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveAllWithFileInfoMstSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveAllWithFileInfoMst" />
+  </wsdl:message>
+  <wsdl:message name="SaveAllWithFileInfoMstSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveAllWithFileInfoMstResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadFileOnlySoapIn">
+    <wsdl:part name="parameters" element="tns:UploadFileOnly" />
+  </wsdl:message>
+  <wsdl:message name="UploadFileOnlySoapOut">
+    <wsdl:part name="parameters" element="tns:UploadFileOnlyResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteFolderSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteFolder" />
+  </wsdl:message>
+  <wsdl:message name="DeleteFolderSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteFolderResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteFilesSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteFiles" />
+  </wsdl:message>
+  <wsdl:message name="DeleteFilesSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteFilesResponse" />
+  </wsdl:message>
+  <wsdl:message name="BeginDownloadSoapIn">
+    <wsdl:part name="parameters" element="tns:BeginDownload" />
+  </wsdl:message>
+  <wsdl:message name="BeginDownloadSoapOut">
+    <wsdl:part name="parameters" element="tns:BeginDownloadResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetChunkSoapIn">
+    <wsdl:part name="parameters" element="tns:GetChunk" />
+  </wsdl:message>
+  <wsdl:message name="GetChunkSoapOut">
+    <wsdl:part name="parameters" element="tns:GetChunkResponse" />
+  </wsdl:message>
+  <wsdl:message name="EndDownloadSoapIn">
+    <wsdl:part name="parameters" element="tns:EndDownload" />
+  </wsdl:message>
+  <wsdl:message name="EndDownloadSoapOut">
+    <wsdl:part name="parameters" element="tns:EndDownloadResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUploadSizeLimmitSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUploadSizeLimmit" />
+  </wsdl:message>
+  <wsdl:message name="GetUploadSizeLimmitSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUploadSizeLimmitResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteFileInfoMstSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteFileInfoMst" />
+  </wsdl:message>
+  <wsdl:message name="DeleteFileInfoMstSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteFileInfoMstResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFileInfoDetailSeqsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFileInfoDetailSeqs" />
+  </wsdl:message>
+  <wsdl:message name="GetFileInfoDetailSeqsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFileInfoDetailSeqsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFileInfoDetailNamesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFileInfoDetailNames" />
+  </wsdl:message>
+  <wsdl:message name="GetFileInfoDetailNamesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFileInfoDetailNamesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFileInfoDetailGuidNamesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFileInfoDetailGuidNames" />
+  </wsdl:message>
+  <wsdl:message name="GetFileInfoDetailGuidNamesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFileInfoDetailGuidNamesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFileInfoDetailGuidsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFileInfoDetailGuids" />
+  </wsdl:message>
+  <wsdl:message name="GetFileInfoDetailGuidsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFileInfoDetailGuidsResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteFileInfoDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteFileInfoDetails" />
+  </wsdl:message>
+  <wsdl:message name="DeleteFileInfoDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteFileInfoDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAllFileInfoDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteAllFileInfoDetails" />
+  </wsdl:message>
+  <wsdl:message name="DeleteAllFileInfoDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteAllFileInfoDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFileInfoUrlSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFileInfoUrl" />
+  </wsdl:message>
+  <wsdl:message name="GetFileInfoUrlSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFileInfoUrlResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFileInfoDetailUrlSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFileInfoDetailUrl" />
+  </wsdl:message>
+  <wsdl:message name="GetFileInfoDetailUrlSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFileInfoDetailUrlResponse" />
+  </wsdl:message>
+  <wsdl:portType name="FMServiceSoap">
+    <wsdl:operation name="GetUpdateFiles">
+      <wsdl:input message="tns:GetUpdateFilesSoapIn" />
+      <wsdl:output message="tns:GetUpdateFilesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBaseUpdateFiles">
+      <wsdl:input message="tns:GetBaseUpdateFilesSoapIn" />
+      <wsdl:output message="tns:GetBaseUpdateFilesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReportsUpdateFiles">
+      <wsdl:input message="tns:GetReportsUpdateFilesSoapIn" />
+      <wsdl:output message="tns:GetReportsUpdateFilesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSubReportsUpdateFiles">
+      <wsdl:input message="tns:GetSubReportsUpdateFilesSoapIn" />
+      <wsdl:output message="tns:GetSubReportsUpdateFilesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="NeedReloadAllFiles">
+      <wsdl:input message="tns:NeedReloadAllFilesSoapIn" />
+      <wsdl:output message="tns:NeedReloadAllFilesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveFileWithShellExecute">
+      <wsdl:input message="tns:SaveFileWithShellExecuteSoapIn" />
+      <wsdl:output message="tns:SaveFileWithShellExecuteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Initialization">
+      <wsdl:input message="tns:InitializationSoapIn" />
+      <wsdl:output message="tns:InitializationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BeginUpload">
+      <wsdl:input message="tns:BeginUploadSoapIn" />
+      <wsdl:output message="tns:BeginUploadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AppendChunk">
+      <wsdl:input message="tns:AppendChunkSoapIn" />
+      <wsdl:output message="tns:AppendChunkSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EndUpload">
+      <wsdl:input message="tns:EndUploadSoapIn" />
+      <wsdl:output message="tns:EndUploadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Save">
+      <wsdl:input message="tns:SaveSoapIn" />
+      <wsdl:output message="tns:SaveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveAll">
+      <wsdl:input message="tns:SaveAllSoapIn" />
+      <wsdl:output message="tns:SaveAllSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveAllWithFileInfoMst">
+      <wsdl:input message="tns:SaveAllWithFileInfoMstSoapIn" />
+      <wsdl:output message="tns:SaveAllWithFileInfoMstSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadFileOnly">
+      <wsdl:input message="tns:UploadFileOnlySoapIn" />
+      <wsdl:output message="tns:UploadFileOnlySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFolder">
+      <wsdl:input message="tns:DeleteFolderSoapIn" />
+      <wsdl:output message="tns:DeleteFolderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFiles">
+      <wsdl:input message="tns:DeleteFilesSoapIn" />
+      <wsdl:output message="tns:DeleteFilesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BeginDownload">
+      <wsdl:input message="tns:BeginDownloadSoapIn" />
+      <wsdl:output message="tns:BeginDownloadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetChunk">
+      <wsdl:input message="tns:GetChunkSoapIn" />
+      <wsdl:output message="tns:GetChunkSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EndDownload">
+      <wsdl:input message="tns:EndDownloadSoapIn" />
+      <wsdl:output message="tns:EndDownloadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUploadSizeLimmit">
+      <wsdl:input message="tns:GetUploadSizeLimmitSoapIn" />
+      <wsdl:output message="tns:GetUploadSizeLimmitSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFileInfoMst">
+      <wsdl:input message="tns:DeleteFileInfoMstSoapIn" />
+      <wsdl:output message="tns:DeleteFileInfoMstSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFileInfoDetailSeqs">
+      <wsdl:input message="tns:GetFileInfoDetailSeqsSoapIn" />
+      <wsdl:output message="tns:GetFileInfoDetailSeqsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFileInfoDetailNames">
+      <wsdl:input message="tns:GetFileInfoDetailNamesSoapIn" />
+      <wsdl:output message="tns:GetFileInfoDetailNamesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFileInfoDetailGuidNames">
+      <wsdl:input message="tns:GetFileInfoDetailGuidNamesSoapIn" />
+      <wsdl:output message="tns:GetFileInfoDetailGuidNamesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFileInfoDetailGuids">
+      <wsdl:input message="tns:GetFileInfoDetailGuidsSoapIn" />
+      <wsdl:output message="tns:GetFileInfoDetailGuidsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFileInfoDetails">
+      <wsdl:input message="tns:DeleteFileInfoDetailsSoapIn" />
+      <wsdl:output message="tns:DeleteFileInfoDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllFileInfoDetails">
+      <wsdl:input message="tns:DeleteAllFileInfoDetailsSoapIn" />
+      <wsdl:output message="tns:DeleteAllFileInfoDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFileInfoUrl">
+      <wsdl:input message="tns:GetFileInfoUrlSoapIn" />
+      <wsdl:output message="tns:GetFileInfoUrlSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFileInfoDetailUrl">
+      <wsdl:input message="tns:GetFileInfoDetailUrlSoapIn" />
+      <wsdl:output message="tns:GetFileInfoDetailUrlSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FMServiceSoap" type="tns:FMServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetUpdateFiles">
+      <soap:operation soapAction="http://tempuri.org/GetUpdateFiles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBaseUpdateFiles">
+      <soap:operation soapAction="http://tempuri.org/GetBaseUpdateFiles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReportsUpdateFiles">
+      <soap:operation soapAction="http://tempuri.org/GetReportsUpdateFiles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubReportsUpdateFiles">
+      <soap:operation soapAction="http://tempuri.org/GetSubReportsUpdateFiles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NeedReloadAllFiles">
+      <soap:operation soapAction="http://tempuri.org/NeedReloadAllFiles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveFileWithShellExecute">
+      <soap:operation soapAction="http://tempuri.org/SaveFileWithShellExecute" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Initialization">
+      <soap:operation soapAction="http://tempuri.org/Initialization" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BeginUpload">
+      <soap:operation soapAction="http://tempuri.org/BeginUpload" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AppendChunk">
+      <soap:operation soapAction="http://tempuri.org/AppendChunk" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EndUpload">
+      <soap:operation soapAction="http://tempuri.org/EndUpload" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Save">
+      <soap:operation soapAction="http://tempuri.org/Save" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveAll">
+      <soap:operation soapAction="http://tempuri.org/SaveAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveAllWithFileInfoMst">
+      <soap:operation soapAction="http://tempuri.org/SaveAllWithFileInfoMst" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFileOnly">
+      <soap:operation soapAction="http://tempuri.org/UploadFileOnly" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFolder">
+      <soap:operation soapAction="http://tempuri.org/DeleteFolder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFiles">
+      <soap:operation soapAction="http://tempuri.org/DeleteFiles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BeginDownload">
+      <soap:operation soapAction="http://tempuri.org/BeginDownload" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetChunk">
+      <soap:operation soapAction="http://tempuri.org/GetChunk" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EndDownload">
+      <soap:operation soapAction="http://tempuri.org/EndDownload" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUploadSizeLimmit">
+      <soap:operation soapAction="http://tempuri.org/GetUploadSizeLimmit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFileInfoMst">
+      <soap:operation soapAction="http://tempuri.org/DeleteFileInfoMst" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileInfoDetailSeqs">
+      <soap:operation soapAction="http://tempuri.org/GetFileInfoDetailSeqs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileInfoDetailNames">
+      <soap:operation soapAction="http://tempuri.org/GetFileInfoDetailNames" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileInfoDetailGuidNames">
+      <soap:operation soapAction="http://tempuri.org/GetFileInfoDetailGuidNames" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileInfoDetailGuids">
+      <soap:operation soapAction="http://tempuri.org/GetFileInfoDetailGuids" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFileInfoDetails">
+      <soap:operation soapAction="http://tempuri.org/DeleteFileInfoDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllFileInfoDetails">
+      <soap:operation soapAction="http://tempuri.org/DeleteAllFileInfoDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileInfoUrl">
+      <soap:operation soapAction="http://tempuri.org/GetFileInfoUrl" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileInfoDetailUrl">
+      <soap:operation soapAction="http://tempuri.org/GetFileInfoDetailUrl" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FMServiceSoap12" type="tns:FMServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetUpdateFiles">
+      <soap12:operation soapAction="http://tempuri.org/GetUpdateFiles" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBaseUpdateFiles">
+      <soap12:operation soapAction="http://tempuri.org/GetBaseUpdateFiles" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReportsUpdateFiles">
+      <soap12:operation soapAction="http://tempuri.org/GetReportsUpdateFiles" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubReportsUpdateFiles">
+      <soap12:operation soapAction="http://tempuri.org/GetSubReportsUpdateFiles" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NeedReloadAllFiles">
+      <soap12:operation soapAction="http://tempuri.org/NeedReloadAllFiles" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveFileWithShellExecute">
+      <soap12:operation soapAction="http://tempuri.org/SaveFileWithShellExecute" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Initialization">
+      <soap12:operation soapAction="http://tempuri.org/Initialization" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BeginUpload">
+      <soap12:operation soapAction="http://tempuri.org/BeginUpload" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AppendChunk">
+      <soap12:operation soapAction="http://tempuri.org/AppendChunk" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EndUpload">
+      <soap12:operation soapAction="http://tempuri.org/EndUpload" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Save">
+      <soap12:operation soapAction="http://tempuri.org/Save" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveAll">
+      <soap12:operation soapAction="http://tempuri.org/SaveAll" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveAllWithFileInfoMst">
+      <soap12:operation soapAction="http://tempuri.org/SaveAllWithFileInfoMst" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFileOnly">
+      <soap12:operation soapAction="http://tempuri.org/UploadFileOnly" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFolder">
+      <soap12:operation soapAction="http://tempuri.org/DeleteFolder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFiles">
+      <soap12:operation soapAction="http://tempuri.org/DeleteFiles" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BeginDownload">
+      <soap12:operation soapAction="http://tempuri.org/BeginDownload" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetChunk">
+      <soap12:operation soapAction="http://tempuri.org/GetChunk" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EndDownload">
+      <soap12:operation soapAction="http://tempuri.org/EndDownload" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUploadSizeLimmit">
+      <soap12:operation soapAction="http://tempuri.org/GetUploadSizeLimmit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFileInfoMst">
+      <soap12:operation soapAction="http://tempuri.org/DeleteFileInfoMst" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileInfoDetailSeqs">
+      <soap12:operation soapAction="http://tempuri.org/GetFileInfoDetailSeqs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileInfoDetailNames">
+      <soap12:operation soapAction="http://tempuri.org/GetFileInfoDetailNames" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileInfoDetailGuidNames">
+      <soap12:operation soapAction="http://tempuri.org/GetFileInfoDetailGuidNames" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileInfoDetailGuids">
+      <soap12:operation soapAction="http://tempuri.org/GetFileInfoDetailGuids" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFileInfoDetails">
+      <soap12:operation soapAction="http://tempuri.org/DeleteFileInfoDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllFileInfoDetails">
+      <soap12:operation soapAction="http://tempuri.org/DeleteAllFileInfoDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileInfoUrl">
+      <soap12:operation soapAction="http://tempuri.org/GetFileInfoUrl" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileInfoDetailUrl">
+      <soap12:operation soapAction="http://tempuri.org/GetFileInfoDetailUrl" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FMService">
+    <wsdl:port name="FMServiceSoap" binding="tns:FMServiceSoap">
+      <soap:address location="http://localhost/IFMService/FMService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FMServiceSoap12" binding="tns:FMServiceSoap12">
+      <soap12:address location="http://localhost/IFMService/FMService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

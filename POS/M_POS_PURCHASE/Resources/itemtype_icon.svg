@@ -1,0 +1,39 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<svg viewBox="-2.0025 -4.2575 32 32" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="레이어_1" transform="translate(-0.8046, -3.3356)">
+    <g transform="matrix(0.0521, 0, 0, 0.0521, 0, 0)">
+      <g>
+        <g>
+          <path d="M195.4, 157C195.4, 208.4 155.1, 250 105.4, 250C55.7, 250 15.4, 208.4 15.4, 157C15.4, 105.6 55.7, 64 105.4, 64C155.1, 64 195.4, 105.6 195.4, 157z" fill="#039C23" class="Green" />
+        </g>
+      </g>
+    </g>
+  </g>
+  <g id="레이어_1" transform="translate(-0.8046, -3.3356)">
+    <g transform="matrix(0.0521, 0, 0, 0.0521, 0, 0)">
+      <g>
+        <g>
+          <rect x="266.1" y="107.3" width="286.9" height="99.4" rx="0" ry="0" fill="#039C23" class="Green" />
+        </g>
+      </g>
+    </g>
+  </g>
+  <g id="레이어_1" transform="translate(-0.8046, -3.3356)">
+    <g transform="matrix(0.0521, 0, 0, 0.0521, 0, 0)">
+      <g>
+        <g>
+          <path d="M195.4, 422C195.4, 473.4 155.1, 515 105.4, 515C55.7, 515 15.4, 473.4 15.4, 422C15.4, 370.6 55.7, 329 105.4, 329C155.1, 329 195.4, 370.6 195.4, 422z" fill="#039C23" class="Green" />
+        </g>
+      </g>
+    </g>
+  </g>
+  <g id="레이어_1" transform="translate(-0.8046, -3.3356)">
+    <g transform="matrix(0.0521, 0, 0, 0.0521, 0, 0)">
+      <g>
+        <g>
+          <rect x="266.1" y="372.3" width="286.9" height="99.4" rx="0" ry="0" fill="#039C23" class="Green" />
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

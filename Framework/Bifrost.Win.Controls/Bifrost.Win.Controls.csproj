@@ -1,0 +1,479 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2376F735-CB13-42CE-97B4-04CD279D7369}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Bifrost.Win.Controls</RootNamespace>
+    <AssemblyName>Bifrost.Win.Controls</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>kucky.snk</AssemblyOriginatorKeyFile>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <PublishUrl>게시\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AIMS, Version=15.2.11.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Dev_Deploy\AIMS.dll</HintPath>
+    </Reference>
+    <Reference Include="Bifrost.Common">
+      <HintPath>..\..\..\GPOSDeploy\Bifrost.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Bifrost.Data">
+      <HintPath>..\..\..\GPOSDeploy\Bifrost.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Bifrost.DBManager">
+      <HintPath>..\..\..\GPOSDeploy\Bifrost.DBManager.dll</HintPath>
+    </Reference>
+    <Reference Include="Bifrost.Grid">
+      <HintPath>..\..\..\GPOSDeploy\Bifrost.Grid.dll</HintPath>
+    </Reference>
+    <Reference Include="Bifrost.Helper">
+      <HintPath>..\..\..\GPOSDeploy\Bifrost.Helper.dll</HintPath>
+    </Reference>
+    <Reference Include="Bifrost.System">
+      <HintPath>..\..\..\GPOSDeploy\Bifrost.System.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Pdf.v20.1.Core, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v20.1.Export, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Office.v20.1.Core, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v20.1.Core, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v20.1.Core, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Sparkline.v20.1.Core, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.Desktop.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v20.1.Reporting.Extensions, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v20.1.Core, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeList.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="aControl\aButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="aControl\aCheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="aControl\aCheckBox.designer.cs">
+      <DependentUpon>aCheckBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="aControl\aDateEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="aControl\aDateYear.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="aControl\aDateMonth.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="aControl\aGroupBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="aControl\aGroupControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="aControl\aLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="aControl\aMemoEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="aControl\aMemoEdit.designer.cs">
+      <DependentUpon>aMemoEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="aControl\aNavButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="aControl\aNavButton.Designer.cs">
+      <DependentUpon>aNavButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="aControl\aNumericText.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="aControl\aNumericText.designer.cs">
+      <DependentUpon>aNumericText.cs</DependentUpon>
+    </Compile>
+    <Compile Include="aControl\aPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="aControl\aPeriodMonthEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="aControl\aPeriodMonthEdit.Designer.cs">
+      <DependentUpon>aPeriodMonthEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="aControl\aPeriodEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="aControl\aPeriodEdit.Designer.cs">
+      <DependentUpon>aPeriodEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="aControl\aRadioButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="aControl\aRadioButton.designer.cs">
+      <DependentUpon>aRadioButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="aControl\aScrollablePanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="aControl\aScrollablePanelHelper.cs" />
+    <Compile Include="aControl\aTabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="aControl\aTabControl.designer.cs">
+      <DependentUpon>aTabControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="aControl\aTabPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="aControl\aTabPanel.designer.cs">
+      <DependentUpon>aTabPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="aControl\aMaskEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="aControl\aTextEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="aControl\aButtonSizeFree.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="aControl\aLookupEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="aControl\aTransparentPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="aControl\DateEditCalendarExt.cs" />
+    <Compile Include="aControl\NumericEnum.cs" />
+    <Compile Include="aControl\RepositoryItemaButtonEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="aControl\RepositoryItemaDateEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="aControl\RepositoryItemaDateYear.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="aControl\RepositoryItemaDateMonth.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="aControl\RepositoryItemaLookUpEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ConfigUtil.cs" />
+    <Compile Include="ControlUtil.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Images.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Images.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="aControl\aButton.resx">
+      <DependentUpon>aButton.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="aControl\aCheckBox.resx">
+      <DependentUpon>aCheckBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="aControl\aDateEdit.resx">
+      <DependentUpon>aDateEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="aControl\aDateYear.resx">
+      <DependentUpon>aDateYear.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="aControl\aDateMonth.resx">
+      <DependentUpon>aDateMonth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="aControl\aLabel.resx">
+      <DependentUpon>aLabel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="aControl\aMemoEdit.resx">
+      <DependentUpon>aMemoEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="aControl\aNavButton.resx">
+      <DependentUpon>aNavButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="aControl\aNumericText.resx">
+      <DependentUpon>aNumericText.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="aControl\aPeriodMonthEdit.resx">
+      <DependentUpon>aPeriodMonthEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="aControl\aPeriodEdit.resx">
+      <DependentUpon>aPeriodEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="aControl\aRadioButton.resx">
+      <DependentUpon>aRadioButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="aControl\aTabPanel.resx">
+      <DependentUpon>aTabPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="aControl\aMaskEdit.resx">
+      <DependentUpon>aMaskEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="aControl\aTextEdit.resx">
+      <DependentUpon>aTextEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="aControl\aButtonSizeFree.resx">
+      <DependentUpon>aButtonSizeFree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Images.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="kucky.snk" />
+    <None Include="Resources\Images.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_popup.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_Add_disable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_Del_disable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_2depth.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_2depth_HOver.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_Add_default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_Add_HOver.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_Del_default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_Del_HOver.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_disabled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_enabled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_etc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_etc_HOver.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_Ref_default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_Ref_HOver.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_Ref_disable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\txtClear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_period.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_calendar_disable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lookup_disable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\print_icon.svg" />
+    <None Include="Resources\popup_question_icon.svg" />
+    <None Include="Resources\popup_notice_icon.svg" />
+    <None Include="Resources\popup_information_icon.svg" />
+    <None Include="Resources\popup_error_icon.svg" />
+    <None Include="Resources\bright_calculator_back_icon_normal.svg" />
+    <None Include="Resources\bright_calculator_back_icon_select.svg" />
+    <None Include="Resources\bright_calculator_dot_icon_normal.svg" />
+    <None Include="Resources\bright_calculator_dot_icon_select.svg" />
+    <None Include="Resources\bright_calculator_minus_icon_normal.svg" />
+    <None Include="Resources\bright_calculator_minus_icon_select.svg" />
+    <None Include="Resources\bright_close_icon_normal.svg" />
+    <None Include="Resources\bright_close_icon_select.svg" />
+    <None Include="Resources\bright_dropdown_icon_normal.svg" />
+    <None Include="Resources\bright_dropdown_icon_select.svg" />
+    <None Include="Resources\bright_gpos_logo_header.svg" />
+    <None Include="Resources\bright_header_close_icon_normal.svg" />
+    <None Include="Resources\bright_header_close_icon_select.svg" />
+    <None Include="Resources\bright_page_back_icon_normal.svg" />
+    <None Include="Resources\bright_page_back_icon_select.svg" />
+    <None Include="Resources\bright_page_bottom_icon_normal.svg" />
+    <None Include="Resources\bright_page_bottom_icon_select.svg" />
+    <None Include="Resources\bright_page_down_icon_normal.svg" />
+    <None Include="Resources\bright_page_down_icon_select.svg" />
+    <None Include="Resources\bright_page_next_icon_normal.svg" />
+    <None Include="Resources\bright_page_next_icon_select.svg" />
+    <None Include="Resources\bright_page_top_icon_normal.svg" />
+    <None Include="Resources\bright_page_top_icon_select.svg" />
+    <None Include="Resources\bright_page_up_icon_normal.svg" />
+    <None Include="Resources\bright_page_up_icon_select.svg" />
+    <None Include="Resources\bright_radio_check_icon_normal.svg" />
+    <None Include="Resources\bright_radio_check_icon_select.svg" />
+    <None Include="Resources\bright_receip_print_icon.svg" />
+    <None Include="Resources\bright_reorder_icon_normal.svg" />
+    <None Include="Resources\bright_reorder_icon_select.svg" />
+    <None Include="Resources\bright_reset_icon_normal.svg" />
+    <None Include="Resources\bright_reset_icon_select.svg" />
+    <None Include="Resources\bright_save_icon.svg" />
+    <None Include="Resources\bright_search_icon_normal.svg" />
+    <None Include="Resources\bright_section_icon_normal.svg" />
+    <None Include="Resources\bright_section_icon_select.svg" />
+    <None Include="Resources\bright_sell_icon.svg" />
+    <None Include="Resources\bright_setting_icon_normal.svg" />
+    <None Include="Resources\bright_setting_icon_select.svg" />
+    <None Include="Resources\bright_star_icon_normal.svg" />
+    <None Include="Resources\bright_star_icon_select.svg" />
+    <None Include="Resources\bright_to_bottom_icon_normal.svg" />
+    <None Include="Resources\bright_to_bottom_icon_select.svg" />
+    <None Include="Resources\bright_to_left_icon_normal.svg" />
+    <None Include="Resources\bright_to_left_icon_select.svg" />
+    <None Include="Resources\bright_to_right_icon_normal.svg" />
+    <None Include="Resources\bright_to_right_left_icon_select.svg" />
+    <None Include="Resources\bright_to_top_icon_normal.svg" />
+    <None Include="Resources\bright_to_top_icon_select.svg" />
+    <None Include="Resources\bright_trash_icon_normal.svg" />
+    <None Include="Resources\brightsearch_icon_select.svg" />
+    <Content Include="Resources\btn_popup.png" />
+    <None Include="Resources\excel_icon.svg" />
+    <Content Include="Resources\lookup_default.png" />
+    <Content Include="Resources\lookup_HOver.png" />
+    <None Include="Resources\new_icon_1.svg" />
+    <None Include="Resources\new_icon_2.svg" />
+    <None Include="Resources\new_icon_3.svg" />
+    <None Include="Resources\new_icon_4.svg" />
+    <Content Include="Resources\Period_1month.png" />
+    <Content Include="Resources\Period_1month_HOver.png" />
+    <Content Include="Resources\Period_1year.png" />
+    <Content Include="Resources\Period_1year_HOVer.png" />
+    <Content Include="Resources\Period_3month.png" />
+    <Content Include="Resources\Period_3month_HOver.png" />
+    <Content Include="Resources\Period_6month.png" />
+    <Content Include="Resources\Period_6month_HOVer.png" />
+    <Content Include="Resources\Period_last-month.png" />
+    <Content Include="Resources\Period_last-month_HOver.png" />
+    <Content Include="Resources\Period_this-month.png" />
+    <Content Include="Resources\Period_this-month_HOver.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>copy $(TargetPath) D:\GPOSDeploy</PostBuildEvent>
+  </PropertyGroup>
+</Project>

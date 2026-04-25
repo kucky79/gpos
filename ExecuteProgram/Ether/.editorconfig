@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# CS1690: 참조로 마샬링하는 클래스의 필드에 있는 멤버에 액세스하면 런타임 예외가 발생할 수 있습니다.
+dotnet_diagnostic.CS1690.severity = silent

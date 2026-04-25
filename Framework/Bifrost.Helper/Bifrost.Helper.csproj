@@ -1,0 +1,388 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1CC7FF58-D260-46AC-932A-ED313AAA4230}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Bifrost.Helper</RootNamespace>
+    <AssemblyName>Bifrost.Helper</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>kucky.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bifrost.Adv.Controls">
+      <HintPath>..\..\..\GPOSDeploy\Bifrost.Adv.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Bifrost.Common">
+      <HintPath>..\..\..\GPOSDeploy\Bifrost.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Bifrost.Data">
+      <HintPath>..\..\..\GPOSDeploy\Bifrost.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Bifrost.DBManager">
+      <HintPath>..\..\..\GPOSDeploy\Bifrost.DBManager.dll</HintPath>
+    </Reference>
+    <Reference Include="Bifrost.Grid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b8524490ef01034a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\GPOSDeploy\Bifrost.Grid.dll</HintPath>
+    </Reference>
+    <Reference Include="Bifrost.Win">
+      <HintPath>..\..\..\GPOSDeploy\Bifrost.Win.dll</HintPath>
+    </Reference>
+    <Reference Include="Bifrost.Win.Controls">
+      <HintPath>..\..\..\GPOSDeploy\Bifrost.Win.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Dashboard.v20.1.Win, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.DataAccess.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Images.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Pdf.v20.1.Core, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v20.1.Export, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Office.v20.1.Core, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v20.1.Core, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v20.1.Core, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Sparkline.v20.1.Core, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Spreadsheet.v20.1.Core, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Data.Desktop.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraNavBar.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Charts.v20.1.Core, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v20.1.Wizard, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v20.1.Core, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.CodeParser.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v20.1.UI, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v20.1.Extensions, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraSpreadsheet.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApiHelper.cs" />
+    <Compile Include="BXLHelper.cs" />
+    <Compile Include="FormEnum.cs" />
+    <Compile Include="Image.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Image.Designer.cs">
+      <DependentUpon>Image.cs</DependentUpon>
+    </Compile>
+    <Compile Include="POSConfigHelper.cs" />
+    <Compile Include="Enum.cs" />
+    <Compile Include="GridHelper.cs" />
+    <Compile Include="PrinterHelper.cs" />
+    <Compile Include="POSPrintHelper.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigHelper.cs" />
+    <Compile Include="CtrlHelper.cs" />
+    <Compile Include="ExcelHelper.cs" />
+    <Compile Include="FormHelper.cs" />
+    <Compile Include="FormHelperArgs.cs" />
+    <Compile Include="HttpFileHelper.cs" />
+    <Compile Include="IniFile.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportHelper.cs" />
+    <Compile Include="Web References\SVCWeb\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Image.resx">
+      <DependentUpon>Image.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="kucky.snk" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\SVCWeb\FileUpload_M.wsdl" />
+    <None Include="Web References\SVCWeb\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://222.234.146.44/ISYWebService/HttpFile/FileUpload_M.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\SVCWeb\</RelPath>
+      <UpdateFromURL>http://222.234.146.44/ISYWebService/HttpFile/FileUpload_M.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>NF_A2P_Helper_SVCWeb_Upload</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\SVCWeb\FileUpload_M.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_calculator_back_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_calculator_back_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_calculator_dot_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_calculator_dot_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_calculator_minus_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_calculator_minus_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_close_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_close_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_dropdown_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_dropdown_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_gpos_logo_header.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_header_close_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_header_close_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_page_back_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_page_back_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_page_bottom_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_page_bottom_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_page_down_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_page_down_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_page_next_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_page_next_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_page_top_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_page_top_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_page_up_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_page_up_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_radio_check_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_radio_check_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_receip_print_icon.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_registration_icon.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_reorder_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_reorder_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_reset_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_reset_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_save_icon.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_search_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_section_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_section_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_sell_icon.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_setting_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_setting_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_star_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_star_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_to_bottom_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_to_bottom_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_to_left_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_to_left_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_to_right_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_to_right_left_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_to_top_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_to_top_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright_trash_icon_normal.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\brightsearch_icon_select.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\excel_icon.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new_icon_1.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new_icon_2.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new_icon_3.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new_icon_4.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\popup_error_icon.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\popup_information_icon.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\popup_notice_icon.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\popup_question_icon.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\print_icon.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bifrost.Office\Bifrost.Office.csproj">
+      <Project>{91832ECD-202C-4422-85A4-29C1746DAD58}</Project>
+      <Name>Bifrost.Office</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy $(TargetPath) D:\GPOSDeploy</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Bifrost.Common.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="NF_Framework_Common_ISYWebService_SYWebService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/ISYWebService/SY/NF.SY.WSL.SYWebService/SYWebService_WBLK.asmx</Value>
+    </Setting>
+    <Setting Name="ISYWebService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/ISYWebService/SY/NF.SY.WSL.SYWebService/SYWebService_WBLK.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
